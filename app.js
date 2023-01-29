@@ -1,11 +1,11 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const graphqlHttp = require("express-graphql");
-const graphiQLSchema = require("./graphql/schema/index");
-const graphiQLResolvers = require("./graphql/resolvers/index");
-const mongoose = require("mongoose");
-const isAuth = require("./middleware/isAuth");
-const cors = require("cors");
+import express from 'express';
+import bodyParser from 'body-parser';
+import mongoose from 'mongoose';
+import isAuth from './middleware/isAuth.js';
+import cors from 'cors';
+import useHttpGraphQL from './middleware/graphqlHttpServer.js';
+import useApolloGraphQLServer from './middleware/apolloGraphQLServer.js';
+
 const app = express();
 //const events = [];
 app.use(bodyParser.json());
@@ -14,14 +14,8 @@ app.use(cors());
 
 app.use(isAuth);
 
-app.use(
-  "/graphql",
-  graphqlHttp.graphqlHTTP({
-    schema: graphiQLSchema,
-    rootValue: graphiQLResolvers,
-    graphiql: true,
-  })
-);
+//useHttpGraphQL(app);
+useApolloGraphQLServer(app);
 
 mongoose
   .connect(
@@ -29,6 +23,6 @@ mongoose
   )
   .then(() => {
     app.listen(4000);
-    console.log("Server started");
+    console.log('Server started');
   })
   .catch((err) => console.log(err));

@@ -1,8 +1,8 @@
-const User = require("../../models/user");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+import User from '../../models/user.js';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
-module.exports = {
+const Auth = {
   createUser: async (args) => {
     try {
       const existingUser = await User.findOne({ email: args.userInput.email });
@@ -46,3 +46,4 @@ module.exports = {
     }
   },
 };
+export default Auth;

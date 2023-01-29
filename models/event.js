@@ -1,4 +1,5 @@
-const mongoose = require("mongoose");
+import mongoose from 'mongoose';
+mongoose.set('strictQuery', true);
 const Scheme = mongoose.Schema;
 
 const eventSchema = new Scheme({
@@ -24,4 +25,4 @@ const eventSchema = new Scheme({
   },
 });
 
-module.exports = mongoose.model("Event", eventSchema);
+export default mongoose.model("Event", eventSchema);

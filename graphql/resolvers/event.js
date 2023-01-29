@@ -1,8 +1,8 @@
-const Event = require("../../models/event");
-const User = require("../../models/user");
-const { transformEvent } = require("./merge");
+import Event from '../../models/event.js';
+import User from '../../models/user.js';
+import { transformEvent } from './merge.js';
 
-module.exports = {
+const event = {
   events: async () => {
     try {
       const events = await Event.find();
@@ -42,3 +42,4 @@ module.exports = {
     }
   },
 };
+export default event;

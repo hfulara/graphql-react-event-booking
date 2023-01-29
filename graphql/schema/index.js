@@ -1,6 +1,6 @@
-const { buildSchema } = require("graphql");
+import {buildSchema} from 'graphql';
 
-module.exports = buildSchema(`
+const schema = buildSchema(`
     type Booking {
       _id: ID!
       event: Event!
@@ -60,3 +60,4 @@ module.exports = buildSchema(`
         mutation: RootMutation
     }
 `);
+export default schema;

@@ -109,11 +109,12 @@ function Events() {
         `,
       variables: {
         title: title,
-        desc: description,
-        price: price,
+        description: description,
         date: date,
+        price: price,
       },
     };
+    console.log('token', auth.user?.token);
 
     fetch("http://localhost:4000/graphql", {
       method: "POST",
@@ -124,6 +125,7 @@ function Events() {
       },
     })
       .then((res) => {
+        console.log(res)
         if (res.status !== 200 && res.status !== 201) {
           throw new Error("Failed!");
         }
@@ -168,7 +170,7 @@ function Events() {
     const requestBody = {
       query: `
           mutation BookEvent($id: ID!){
-            bookEvent(eventId: $eventId) {
+            bookEvent(eventId: $id) {
               _id
               createdAt
               updatedAt

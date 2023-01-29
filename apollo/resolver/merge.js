@@ -67,3 +67,4 @@ export const transformBooking = (booking) => {
     updatedAt: dateToString(booking._doc.updatedAt),
   };
 };
+

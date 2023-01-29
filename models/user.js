@@ -1,4 +1,5 @@
-const mongoose = require("mongoose");
+import mongoose from 'mongoose';
+mongoose.set('strictQuery', true);
 const Scheme = mongoose.Schema;
 
 const userSchema = new Scheme({
@@ -18,4 +19,4 @@ const userSchema = new Scheme({
   ],
 });
 
-module.exports = mongoose.model("User", userSchema);
+export default mongoose.model("User", userSchema);

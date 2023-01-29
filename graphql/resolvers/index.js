@@ -1,6 +1,6 @@
-const authResolver = require("./auth");
-const eventResolver = require("./event");
-const bookingResolver = require("./booking");
+import authResolver from './auth.js';
+import eventResolver from './event.js';
+import bookingResolver from './booking.js';
 
 const rootResolver = {
   ...authResolver,
@@ -8,4 +8,4 @@ const rootResolver = {
   ...bookingResolver,
 };
 
-module.exports = rootResolver;
+export default rootResolver;

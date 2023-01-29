@@ -1,8 +1,8 @@
-const Booking = require("../../models/booking");
-const Event = require("../../models/event");
-const { transformBooking, transformEvent } = require("./merge");
+import Booking from '../../models/booking.js';
+import Event from '../../models/event.js';
+import { transformBooking, transformEvent } from './merge.js';
 
-module.exports = {
+const booking = {
   bookings: async (args, req) => {
     console.log(req.isAuth, req.userId);
     if (!req.isAuth) {
@@ -47,3 +47,4 @@ module.exports = {
     }
   },
 };
+export default booking;

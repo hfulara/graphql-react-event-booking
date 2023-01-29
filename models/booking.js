@@ -1,6 +1,5 @@
-const mongoose = require("mongoose");
-const { schema } = require("./event");
-
+import mongoose from 'mongoose';
+mongoose.set('strictQuery', true);
 const Schema = mongoose.Schema;
 
 const bookingSchema = new Schema(
@@ -17,4 +16,4 @@ const bookingSchema = new Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Booking", bookingSchema);
+export default mongoose.model("Booking", bookingSchema);
